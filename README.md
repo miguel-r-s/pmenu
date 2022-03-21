@@ -38,7 +38,12 @@ pmenu -f bookmarks.txt | xargs firefox
 
 ```
 git clone git@github.com:miguel-r-s/pmenu.git
+cd pmenu
 ./install.sh
 ```
 
-This creates a symlink to the cloned repo.
+This creates a symlink from `~/.local/bin/` to the implementation of `pmenu` in this repo.
+
+# Issues
+
+If something doesn't work, report an issue on Github or send a pull request with a fix.
