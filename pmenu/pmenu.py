@@ -14,20 +14,19 @@ def display_options(options):
     sys.stdout = open('/dev/tty', 'w')
 
     for n, inpt in enumerate(options):
-        print(f'{n}: {inpt.strip()}')
+        print(f'{n}. {inpt.strip()}')
 
 def pick(options):
 
     # Hijack stdin
     sys.stdin = open('/dev/tty')
+    return [options[int(c)] for c in input('choice: ').split()]
 
-    choice = int(input('choice: '))
-    return options[choice]
-
-def output_option(choice):
+def output_options(choices):
 
     with open('/dev/stdout', 'w') as f_out:
-        f_out.write(choice)
+        for choice in choices:
+            f_out.write(choice)
 
 def parse_cli_args():
 
@@ -41,7 +40,7 @@ def pmenu():
     cli_args = parse_cli_args()
     options  = parse_options(cli_args)
     display_options(options)
-    output_option(pick(options))
+    output_options(pick(options))
 
 if __name__ == "__main__":
     pmenu()
